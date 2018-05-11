@@ -1,0 +1,471 @@
+@CHARSET "UTF-8";
+
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, hr, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, dialog, figure, footer, header, hgroup, nav, section{
+	margin: 0; 
+	padding: 0;
+	border: 0 none;
+	font-family: 'Microsoft YaHei';
+	font-size: 14px;
+	color: #000;
+}
+
+a, a:focus, a:hover{ 
+	text-decoration: none; 
+	cursor: pointer;
+}
+li{
+	list-style: none;
+}
+*, *::after, *::before{box-sizing: border-box;}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button{
+    -webkit-appearance: none !important;
+    margin: 0;
+}
+input[type="number"]{-moz-appearance:textfield;}
+textarea{
+	resize: none;
+}
+
+#ibody{ 
+	display: -webkit-flex; /* Safari */
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: flex-start;
+	align-content: flex-start;
+}
+
+.left_bar{
+	background-color: #0D0D0D; 
+	overflow-y:auto;
+	width: 170px;
+	flex-shrink: 0;
+	display: -webkit-flex; /* Safari */
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+}
+
+.right_container{
+	flex-shrink: 1;
+	display: -webkit-flex; /* Safari */
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+}
+
+/*------------------------------- 菜单 -------------------------------*/
+.logo{ 
+	width: 100%; 
+	height: 95px; 
+	border-bottom: 1px solid #353535; 
+	display: -webkit-flex; /* Safari */
+	display: flex; 
+	justify-content: center;
+	align-items: center;
+	flex-shrink: 0;
+}
+.logo img{ 
+	width: 140px; 
+}
+
+.left_menu{  
+	width: 110%; 
+	overflow: auto;
+}
+
+.left_menu .accordion{
+	background: none;
+	border: none;
+	border-bottom: 1px solid #353535;
+	display: -webkit-flex; /* Safari */
+	display: flex;
+	align-items: center;
+	height: 50px;
+	justify-content: space-around;
+	cursor: pointer;
+}
+
+.left_menu .accordion:hover{
+	background-color: #2f2f2f;
+}
+.left_menu .accordion.click{
+	background-color: #003d4a;
+}
+
+
+.left_menu .accordion .parent_menu{
+	display: -webkit-flex; /* Safari */
+	display: flex;
+	font-size: 14px;
+	color: #c4c4c4;
+	font-weight: normal;
+	align-items: center;
+}
+
+.left_menu .accordion img{
+	margin-right: 15px;
+	width: 20px;
+}
+
+.left_menu .accordion .sub_menu_arrow{
+	width: 14px;
+	margin: 0;
+}
+
+.tooltips{
+	display: -webkit-flex; /* Safari */
+	display: flex;
+	flex-direction: column;
+}
+
+.tooltips a{
+	color: #c4c4c4;
+	font-size: 14px;
+	text-decoration: none;
+	padding: 8px 20px;
+	border-radius: 5px;
+}
+
+.tooltips a:hover{
+	background-color: #09d0e7;
+	color: #fff;
+}
+.tooltips a.click{
+	background-color: #003d4a;
+	color: #fff;
+}
+
+/*------------------------------- 头部 -------------------------------*/
+.right_header{ 
+	display: -webkit-flex; /* Safari */
+	display: flex;
+	height: 42px; 
+	background-color: #595757; 
+	flex-direction: row;
+}
+.right_header_left{
+	display: -webkit-flex; /* Safari */
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: center;
+	flex-grow: 1;
+}
+.right_header_right{
+	display: -webkit-flex; /* Safari */
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	align-items: center;
+	flex-grow: 1;
+}
+
+.right_header a img{ 
+	margin-right: 10px; 
+}
+.right_header a span{ 
+	color: #fff;
+}
+
+.dashboard{
+	margin-left: 15px;
+}
+.user_hello{ 
+	margin-right: 20px;
+}
+
+.line{ 
+	height: 100%; 
+	width: 1px; 
+	background: url('../images/admin/line.png') no-repeat center; 
+	margin-left: 15px;
+}
+
+.top_guidepost{ 
+	display: -webkit-flex; /* Safari */
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	height: 36px; 
+	border-bottom: 1px solid #ccc; 
+}
+.top_guidepost ul{
+	display: -webkit-flex; /* Safari */
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	margin-left: 15px;
+}
+.top_guidepost ul li{ 
+	display: -webkit-flex; /* Safari */
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin-right: 4px; 
+	font-size: 12px;
+	color: #666;
+}
+.top_guidepost ul li a{ 
+	color: inherit; 
+	font-size: 12px;
+}
+.top_guidepost ul .last{ 
+	color: #c82929; 
+}
+.top_guidepost ul .first{ 
+	color: #666; 
+}
+.back_btn{
+	margin-right: 15px;
+}
+
+
+/*------------------------------- 内容容器 -------------------------------*/
+#container{
+	display: -webkit-flex; /* Safari */
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+	align-content: flex-start;
+	overflow: hidden;
+	overflow-y: auto;
+}
+
+/*------------------------------- 搜索 -------------------------------*/
+#search_form{
+	display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+	display: -webkit-flex; /* Safari */
+	display: flex;
+	flex-direction: row;
+	width: 100%
+}
+.search_body{ 
+	display: -webkit-flex; /* Safari */
+	display: flex;
+	flex-direction: row;
+	margin-bottom: 10px; 
+	padding: 11px 1%; 
+	border-bottom: 2px solid #ddd;
+	width: 100%;
+	flex-wrap: wrap;
+}
+
+.search_row{ 
+	display: -webkit-flex; /* Safari */
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	margin-right: 15px; 
+	margin-bottom: 5px;
+	flex-grow: 0;
+}
+
+.search_row input[type='text'], 
+.search_row select{ 
+	width: 138px; 
+	height: 28px; 
+}
+
+.search_btn_row{ 
+	display: -webkit-flex; /* Safari */
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	width: 84px;
+	height: 28px;
+	flex-grow: 0;
+}
+
+
+/*------------------------------- 表格 -------------------------------*/
+.div_table{ 
+	width: 100%; 
+	padding: 5px 1% 0; 
+	min-height: 400px;
+}
+
+.div_table .datagrid-toolbar table{
+	width: 100%;
+}
+.div_table .datagrid-toolbar table tr{
+	display: -webkit-flex; /* Safari */
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.operation a span{
+	color: rgba(255,255,255,0);
+}
+
+.priority{ 
+	width: 45px; 
+	height: 22px; 
+	text-align: right; 
+	display: inline;
+}
+
+tfoot .btn{ 
+	min-width: 85px; 
+	margin-right: 10px; 
+}
+tfoot .btn.btn_create{ 
+	margin-right: 15px; 
+}
+
+/*----------------------------------- 编辑 -----------------------------------*/
+#edit_form{
+	display: -webkit-flex; /* Safari */
+	display: flex;
+	flex-direction: row;
+	width: 100%
+}
+#edit_multiform{
+	display: -webkit-flex; /* Safari */
+	display: flex;
+	flex-direction: row;
+	width: 100%
+}
+.edit_body{ 
+	width: 100%; 
+	padding: 15px; 
+	display: -webkit-flex; /* Safari */
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+.tabs-info{ 
+	width: 100%; 
+	margin-top: 20px;
+	display: -webkit-flex; /* Safari */
+	display: flex;
+	flex-direction: column;
+	flex-wrap:  wrap;
+	align-items: center;
+}
+
+.op_row{
+	width: 100%;
+	display: -webkit-flex; 
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+.edit_row{ 
+	width: 60%; 
+	margin-bottom: 10px; 
+	font-size: 14px;  
+	display: -webkit-flex; /* Safari */
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.edit_row.parent{
+	width: 100%;
+	border-bottom: 1px dotted #ccc;
+}
+
+.edit_row.child{
+	width: 20%;
+}
+
+.edit_row span.name{ 
+	min-width: 15%;
+}
+
+.edit_row span.name.required{
+	position: relative;
+}
+
+.edit_row span.name.required::after{ 
+	left: -8px; 
+	content: "*"; 
+	color: #ea644a; 
+	display: inline-block; 
+	font-size: 17px; 
+	position: absolute; 
+	top: 2px;
+}
+
+.edit_row input[type="text"],
+.edit_row input[type="password"],
+.edit_row select{ 
+	width: 80%; 
+	height: 32px;
+	padding: 0 8px; 
+}
+.edit_row textarea{ 
+	width: 80%; 
+	padding: 0 8px; 
+	resize: none; 
+}
+
+.edit_checkbox{ 
+	margin: 10px 5px; 
+}
+
+.edit_checkbox label{ 
+	line-height: inherit; 
+	cursor: pointer; 
+	font-weight: 700;
+}
+.edit_checkbox input[type='checkbox']{ 
+	margin: 5px; 
+	cursor: pointer;
+}
+
+.edit_btn_row{ 
+	width: 100%; 
+	padding: 8px 0; 
+	border-top: 1px solid #eee;
+	text-align: center;
+	margin-top: 20px;
+}
+
+/*----------------------------------- Error -----------------------------------*/
+.error_code{
+	width: 100%;
+	text-align: center;
+	font-size: 80px;
+	color: #ccc;
+	margin-top: 100px;
+}
+.error_msg{
+	width: 100%;
+	text-align: center;
+	font-size: 20px;
+	margin-top: 20px;
+}
+
+
+/*----------------------------------- cover easyui -----------------------------------*/
+.right_header .l-btn-plain:hover{
+	background: transparent;
+	border: 1px solid #595757;
+}
+.right_header .l-btn-focus{
+	outline: none;
+}
+.right_header .m-btn-plain-active{
+	background: transparent;
+	border-color: #595757;
+}
+.menu-active .menu-text{
+	color: #fff;
+}

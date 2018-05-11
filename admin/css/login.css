@@ -1,0 +1,100 @@
+html, body, div, input{ 
+	margin: 0; 
+	padding: 0; 
+	font-family: 'Microsoft YaHei'; 
+}
+
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+
+.form-control::-moz-placeholder{
+	color: grey;
+}
+
+body{ 
+	width: 100%;
+	background-color: #fff;
+	/*background: url('../images/admin/login_bg.jpg') no-repeat center; */
+}
+
+#container{ 
+	width: 470px; 
+	height: auto; 
+	margin: 0 auto; 
+}
+
+.register{ 
+	float: left; 
+	width: 370px; 
+	height: 320px; 
+	margin: 133px 50px 0; 
+	background-color: rgba(0,128,128,0.5); 
+}
+
+.register_title{
+	color: #fff;
+	font-size: 26px;
+	text-align: center;
+	margin: 20px 0;
+}
+
+.input_row{ 
+	float: left; 
+	width: 100%;
+	padding: 10px 22px; 
+	text-align: center;
+}
+
+.input_row input[type='text'], 
+.input_row input[type='password']{
+	width: 270px; 
+	height: 36px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	font-size: 15px;
+	line-height: 36px;
+	color: #333;
+	background-color: #fff;
+	padding: 5px 8px;
+}
+
+.username{ 
+	text-indent: 33px; 
+	background: #fff url('../images/admin/icon_user.png') no-repeat 11px center; 
+}
+
+.password{ 
+	text-indent: 33px; 
+	background: url('../images/admin/icon_key.png') no-repeat 9px center; 
+}
+
+.btn_login{
+	width: 270px; 
+	height: 38px; 
+	border: 1px solid #555; 
+	border-radius: 3px; 
+	font-size: 15px; 
+	color: #fff; 
+	background-color: #6495ED; 
+	cursor: pointer; 
+	font-family: inherit;
+}
+
+.register_bottom{ 
+	float: left; 
+	width: 100%; 
+	padding: 0 52px;
+	margin-bottom: 10px;
+}
+
+.register_bottom label{
+	color: #fefefe;
+	cursor: pointer;
+	font-size: 12px;
+	line-height: 20px;
+}
+
+.register_bottom input[type="checkbox"]{
+	margin-right: 5px;
+}
