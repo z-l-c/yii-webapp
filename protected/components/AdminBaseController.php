@@ -63,12 +63,34 @@ class AdminBaseController extends Controller
         $ca = Yii::app()->createUrl($controller_name.'/'.$action_name);
         $default_ca = Yii::app()->createUrl($controller_name.'/index');
 
+        $match = false;
         foreach ($this->allMenus as $menu) {
             foreach ($menu->sub_menus as $sub_menu) {
-                if($sub_menu->url == $ca || $sub_menu->url == $default_ca){
+                if($sub_menu->url == $ca){
                     $this->crumbs['parent'] = $menu->name;
                     $this->crumbs['child'] = $sub_menu->name;
                     $this->pageTitle = $sub_menu->name;
+                    $match = true;
+                    break;
+                }
+            }
+            if($match){
+                break;
+            }
+        }
+
+        if(!$match){
+            foreach ($this->allMenus as $menu) {
+                foreach ($menu->sub_menus as $sub_menu) {
+                    if($sub_menu->url == $default_ca){
+                        $this->crumbs['parent'] = $menu->name;
+                        $this->crumbs['child'] = $sub_menu->name;
+                        $this->pageTitle = $sub_menu->name;
+                        $match = true;
+                        break;
+                    }
+                }
+                if($match){
                     break;
                 }
             }
