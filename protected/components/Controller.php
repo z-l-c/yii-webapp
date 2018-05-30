@@ -30,16 +30,12 @@ class Controller extends CController
     }
 
     /**
-    * 上传图片
+    *  webuploader上传图片
     */
     public function actionUploads()
     {
-        $imageHelper = new ImageUploaderHelper(floatval($_GET['maxSize']), boolval($_GET['isThumb']), floatval($_GET['thumbrate']));
-        $result = $imageHelper->fileUpload($_FILES['file']);
-        if($result['result'] == ImageUploaderHelper::E_SUCCESS){
-            echo json_encode(array('status' => 1, 'path' => $result['path']));
-        }else{
-            echo json_encode(array('status' => 0, 'message' => $result['error']));
-        }
+        $result = $this->uploadsPhoto($_FILES['file'], floatval($_GET['maxSize']), boolval($_GET['isThumb']), floatval($_GET['thumbrate']));
+
+        echo json_encode($result);
     }
 }

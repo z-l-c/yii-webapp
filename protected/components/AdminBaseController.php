@@ -50,6 +50,25 @@ class AdminBaseController extends Controller
     }
 
 
+    //执行action之前
+    public function beforeAction($action)
+    {
+        parent::beforeAction($action);
+
+        $controller_id = $this->getId();
+        $action_id = $action->id;
+
+        if($controller_id == 'site' && ($action_id == 'login' || $action_id == 'logout')){
+            return true;
+        }
+        
+        //获取所有菜单
+        $this->allMenus = MenuItem::getValideMenus();
+        //获取当前菜单名称
+        $this->getBreadCrumbs();
+       
+        return true;
+    }
 
 
     /**
@@ -96,27 +115,6 @@ class AdminBaseController extends Controller
             }
         }
     }
-
-    //执行action之前
-    public function beforeAction($action)
-    {
-        parent::beforeAction($action);
-
-        $controller_id = $this->getId();
-        $action_id = $action->id;
-
-        if($controller_id == 'site' && ($action_id == 'login' || $action_id == 'logout')){
-            return true;
-        }
-        
-        //获取所有菜单
-        $this->allMenus = MenuItem::getValideMenus();
-        //获取当前菜单名称
-        $this->getBreadCrumbs();
-       
-        return true;
-    }
-
 
 
     /**
@@ -176,5 +174,59 @@ class AdminBaseController extends Controller
         return null;
     }
 
+
+    /**
+    *
+    * 上传文件
+    * @param file  
+    * @return filepath
+    */
+    public function uploadsFile($file)
+    {
+        $fileHelper = new FileUploaderHelper();
+        $fileHelper->upload_path = '/images/uploads/'.date('Ym');
+        $fileHelper->file_path = Yii::app()->basePath.'/../admin'.$fileHelper->upload_path;
+        //创建上传目录
+        $fileHelper->checkFilePath();
+
+        $fileHelper->originName = $file['name'];
+        $fileHelper->tempName = $file['tmp_name'];
+        $fileHelper->file_size = $file['size'];
+        $fileHelper->file_type = $file['type'];
+        $tmp = explode('.', $fileHelper->originName);
+        $fileHelper->file_extension = $tmp[1];
+
+        $fileHelper->file_name = $fileHelper->getRandName(16).'.'.$fileHelper->file_extension;
+
+        if (!$fileHelper->copyFileToPath()) {
+            return false;
+        }
+
+        return array(
+            "file_path"=>$fileHelper->file_path.'/'.$fileHelper->file_name, 
+            "upload_path"=>$fileHelper->upload_path.'/'.$fileHelper->file_name);
+    }
+
+    /**
+     * 图片上传
+     * @param  [type] $file      文件
+     * @param  [type] $maxSize   最大尺寸, 单位：M
+     * @param  [type] $isThumb   是否生成缩略图
+     * @param  [type] $thumbRate 缩略图比例  小数
+     * @return [type]            [description]
+     */
+    public function uploadsPhoto($file, $maxSize=2, $isThumb=false, $thumbRate=0.5)
+    {
+        $imageHelper = new ImageUploaderHelper(floatval($maxSize), boolval($isThumb), floatval($thumbRate));
+        $result = $imageHelper->fileUpload($file);
+
+        if($result['result'] == ImageUploaderHelper::E_SUCCESS){
+            return array('status' => 1, 'path' => $result['path']);
+        }
+
+        return array('status' => 0, 'message' => $result['error']);
+    }
+
+    
 
 }

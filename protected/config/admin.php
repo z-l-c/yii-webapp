@@ -102,6 +102,12 @@ return array(
             'class'=>'application.extensions.curl.Curl',
         ),
         /**
+         * excel
+         */
+        'excel'=>array(
+            'class'=>'application.extensions.excel.Excel',
+        ),
+        /**
         * 图片处理
         */
         'imagehelper'=>array(

@@ -50,7 +50,7 @@ class ImageUploaderHelper extends FileUploaderHelper
 		//检查图片大小
 		if (!$this->checkFileSize()) {
 			$this->return['result'] = self::E_SIZEERR;
-			$this->return['error'] = "图片大小不能大于".$this->maxSize."M";
+			$this->return['error'] = "图片大小不能大于".$this->maxSize."M (1M=1024K)";
 			return $this->return;
 		}
 		
